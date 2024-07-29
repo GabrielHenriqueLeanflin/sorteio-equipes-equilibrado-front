@@ -1,0 +1,27 @@
+* {
+    font-family: var(--fonte-primaria);
+}
+
+.card-login {
+    width: 428px;
+    border-radius: 14px;
+    height: 505px;
+    background: var(--gradiente-primario);
+
+    h2,
+    a {
+        color: var(--cor-primaria);
+    }
+}
+
+.card-form {
+    background-color: var(--cor-primaria);
+
+    h3 {
+        color: var(--cor-secundaria);
+    }
+}
+
+.esqueci-senha {
+    color: var(--cor-secundaria);
+}

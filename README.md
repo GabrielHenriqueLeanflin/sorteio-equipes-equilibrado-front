@@ -1,27 +1,24 @@
-# FrontSorteioEquipeEquilibrado
+# Projeto Sorteio Equipes Equilibrado
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2.
+--------
 
-## Development server
+# Principais Funcionalidades:
+    - Usuário deverá cadastrar um conta.
+    - Se esquecer a senha, poderá alterar
+    - Ao entrar em sua conta deverá exibir seus jogadores cadastrados.
+    - Caso queira adicionar, alterar ou remover o jogador o usuário poderá.
+    - O sorteio deve acontecer apenas com os jogadores ativos.
+    - O sorteio terá como base o nível de cada jogador cadastrado para manter o equilíbrio entre as equipes.
+      
+--------
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Tecnologias Utilizadas:
+- **Frontend:** Angular( Typescript, JavaScript, HTML5, SASS.), Bootstrap, Angular Material.
 
-## Code scaffolding
+- **Backend:** PHP, Laravel.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+--------
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Objetivo:
+Fiz este projeto com o intuito de ajudar a automatizar os processos de sorteio do meu grupo de futebol semanal.
