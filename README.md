@@ -1,5 +1,9 @@
 # Projeto Sorteio Equipes Equilibrado
 
+Figma: https://www.figma.com/design/d3Aauf0fcUvw2kIzeYGzrg/Projeto-Sorteio-Equipes?node-id=0-1&t=1DEeCjWTuyLqiA1L-1
+
+Estou fazendo este projeto fullstack, desde o design até o backend, afins de praticar o que eu já sei e aprender mais.
+
 --------
 
 # Principais Funcionalidades:
