@@ -1,5 +1,5 @@
 <div class="p-5">
-    <div class="d-flex flex-column card-login m-auto">
+    <div class="d-flex flex-column card-login m-auto align-items-center shadow">
         <h2 class="h-auto text-center fs-1 mb-5 mt-5">Bem vindo!</h2>
 
         <div class="card-form h-auto p-4">
@@ -18,6 +18,8 @@
             </div>
         </div>
 
-        <a class="h-auto text-center fs-5 fw-light mb-5 mt-5" routerLink="/cadastro">Faça seu cadastro</a>
+        <button type="button" class="btn btn-light mt-4 w-50">Entrar</button>
+
+        <a class="h-auto text-center fw-light mb-5 mt-2" (click)="clickCadastro(true)">Faça seu cadastro</a>
     </div>
 </div>

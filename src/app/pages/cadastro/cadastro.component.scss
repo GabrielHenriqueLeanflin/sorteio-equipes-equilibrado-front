@@ -25,3 +25,8 @@
 .esqueci-senha {
     color: var(--cor-secundaria);
 }
+
+input {
+  min-height: auto !important;
+  height: auto !important;
+}

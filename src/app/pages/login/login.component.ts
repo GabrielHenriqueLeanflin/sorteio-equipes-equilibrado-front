@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -10,4 +10,9 @@ import { RouterLink } from '@angular/router';
 })
 export class LoginComponent {
 
+  @Output() showCardCadastro = new EventEmitter;
+
+  clickCadastro(event: boolean) {
+    this.showCardCadastro.emit(event)
+  }
 }

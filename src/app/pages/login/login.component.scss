@@ -11,6 +11,7 @@
     h2,
     a {
         color: var(--cor-primaria);
+        cursor: pointer;
     }
 }
 
@@ -23,5 +24,5 @@
 }
 
 .esqueci-senha {
-    color: var(--cor-secundaria);
+    color: var(--cor-secundaria)!important;
 }

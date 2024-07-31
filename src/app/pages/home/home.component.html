@@ -30,8 +30,12 @@
     </div>
 
     <div class="d-flex flex-column w-50">
-        <app-login></app-login>
-        <app-cadastro></app-cadastro>
+        <app-login
+        *ngIf="!showCadastro"
+        (showCardCadastro)="showCardCadastro($event)"
+        ></app-login>
+
+        <app-cadastro *ngIf="showCadastro"></app-cadastro>
     </div>
 
 </div>

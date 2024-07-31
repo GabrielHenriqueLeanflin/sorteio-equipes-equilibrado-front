@@ -1,23 +1,59 @@
 <div class="p-5">
-    <div class="d-flex flex-column card-login m-auto">
-        <h2 class="h-auto text-center fs-1 mb-5 mt-5">Bem vindo!</h2>
+  <div class="d-flex flex-column card-login m-auto align-items-center shadow">
+    <h2 class="h-auto text-center fs-1 mb-4 mt-4">Cadastro</h2>
 
-        <div class="card-form h-auto p-4">
-            <h3 class="h-auto fs-2 text-center fw-medium">Login</h3>
-            <div class="form-floating mb-3 h-auto">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Seu e-mail</label>
-            </div>
-            <div class="form-floating h-auto">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Sua senha</label>
-            </div>
-
-            <div class="text-end h-auto mt-3">
-                <a class="esqueci-senha" routerLink="">Esqueci minha senha</a>
-            </div>
+    <div class="card-form h-auto p-4">
+      <div class="form-floating mb-3 h-auto">
+        <input
+          type="email"
+          class="form-control"
+          id="floatingInput"
+          placeholder="nome"
+        />
+        <label for="floatingInput">Nome</label>
+      </div>
+      <div class="form-floating mb-3 h-auto">
+        <input
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="name@example.com"
+        />
+        <label for="floatingPassword">E-mail</label>
+      </div>
+      <div class="form-floating w-75 mb-3 h-auto">
+        <input
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="name@example.com"
+        />
+        <label for="floatingPassword">CPF</label>
+      </div>
+      <div class="form-floating w-50 mb-3 h-auto">
+        <input
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="senha"
+        />
+        <label for="floatingPassword">Sua senha</label>
+      </div>
+      <div class="d-flex gap-4 h-auto">
+        <div class="form-floating w-50 h-auto">
+          <input
+            type="confirm-password"
+            class="form-control"
+            id="floatingPassword"
+            placeholder="confirme a senha"
+          />
+          <label for="floatingPassword">Confirme sua senha</label>
         </div>
 
-        <a class="h-auto text-center fs-5 fw-light mb-5 mt-5" routerLink="/cadastro">Faça seu cadastro</a>
+        <button type="button" class="btn btn-success my-auto w-50 h-auto">
+          Pronto
+        </button>
+      </div>
     </div>
+  </div>
 </div>
