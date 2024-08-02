@@ -1,25 +1,49 @@
 <div class="p-5">
-    <div class="d-flex flex-column card-login m-auto align-items-center shadow">
-        <h2 class="h-auto text-center fs-1 mb-5 mt-5">Bem vindo!</h2>
+  <div class="d-flex flex-column card-login m-auto align-items-center shadow">
+    <h2 class="h-auto text-center fs-1 mb-5 mt-5">Bem vindo!</h2>
 
-        <div class="card-form h-auto p-4">
-            <h3 class="h-auto fs-2 text-center fw-medium">Login</h3>
-            <div class="form-floating mb-3 h-auto">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Seu e-mail</label>
-            </div>
-            <div class="form-floating h-auto">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Sua senha</label>
-            </div>
-
-            <div class="text-end h-auto mt-3">
-                <a class="esqueci-senha">Esqueci minha senha</a>
-            </div>
+    <form
+      [formGroup]="loginForm"
+      (submit)="onSubmit($event)"
+      class="d-flex flex-column align-items-center"
+    >
+      <div class="card-form h-auto p-4">
+        <h3 class="h-auto fs-2 text-center fw-medium">Login</h3>
+        <div class="form-floating mb-3 h-auto">
+          <input
+            class="form-control"
+            id="email"
+            type="email"
+            name="email"
+            formControlName="email"
+          />
+          <label for="email">Seu e-mail</label>
+        </div>
+        <div class="form-floating h-auto">
+          <input
+            class="form-control"
+            id="password"
+            type="password"
+            name="password"
+            formControlName="password"
+          />
+          <label for="password">Sua senha</label>
         </div>
 
-        <button type="button" class="btn btn-light mt-4 w-50">Entrar</button>
+        <div class="text-end h-auto mt-3">
+          <a class="esqueci-senha">Esqueci minha senha</a>
+        </div>
+      </div>
 
-        <a class="h-auto text-center fw-light mb-5 mt-2" (click)="clickCadastro(true)">Faça seu cadastro</a>
-    </div>
+      <button type="submit" class="btn btn-light mt-4 w-50 h-auto y-auto">
+        Entrar
+      </button>
+    </form>
+
+    <a
+      class="h-auto text-center fw-light mb-5 mt-2"
+      (click)="clickCadastro(true)"
+      >Faça seu cadastro</a
+    >
+  </div>
 </div>
