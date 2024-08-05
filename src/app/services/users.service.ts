@@ -11,10 +11,16 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
-  public usersList() {
-    return this.http.get(`${this.url}/users`).pipe(
+  getUsersList(): Observable<User> {
+    return this.http.get<User>(`${this.url}/users`).pipe(
       res => res,
       error => error
     )
   }
+
+  autenticar(email: string, senha: string): Observable<any> {
+    return this.http.post(`${this.url}/users/`, { email, senha })
+  }
+
+
 }

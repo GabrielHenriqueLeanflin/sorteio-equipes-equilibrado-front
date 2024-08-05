@@ -1,4 +1,3 @@
-import { UsersService } from './../../services/users.service';
 import { Component, OnInit } from '@angular/core';
 import {MatDividerModule} from '@angular/material/divider';
 import { LoginComponent } from "../login/login.component";
@@ -15,12 +14,9 @@ import { SharedModule } from '../../shared/shared.module';
 export class HomeComponent implements OnInit {
   public showCadastro = false;
 
-  constructor(private usersService: UsersService) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.usersService.usersList().subscribe(res => {
-      console.log(res)
-    })
 
   }
 
