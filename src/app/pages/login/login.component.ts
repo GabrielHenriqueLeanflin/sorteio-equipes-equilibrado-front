@@ -29,9 +29,9 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
 
-    this.usersService.getUsersList().subscribe(res => {
-      this.userCache = res
-    })
+    this.usersService.getUsers().subscribe(res => {
+      console.log(res)
+    });
   }
 
   createForm() {
@@ -43,8 +43,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(event: Event){
     event.preventDefault();
-
-    if(this.loginForm.valid) {
+   /* if(this.loginForm.valid) {
 
       const email = this.loginForm.value.email
       const senha = this.loginForm.value.password
@@ -58,7 +57,7 @@ export class LoginComponent implements OnInit {
           console.log(err)
         }
       })
-    }
+    }*/
   }
 
   clickCadastro(event: boolean) {
