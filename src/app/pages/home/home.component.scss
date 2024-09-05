@@ -6,18 +6,20 @@
     background-image: linear-gradient(to right, rgba(14, 169, 0, 0.5), rgba(14, 169, 0, 0.5)),
         url('/assets/imagens/background-home.jpg');
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
+
 }
 
 .titulo {
     color: var(--cor-primaria);
     font-family: var(--fonte-titulo);
-}
+  }
 
 .card-title {
     color: var(--cor-secundaria);
 }
 
 .card-body span {
-    color: var(--cor-secundaria)
+    color: var(--cor-secundaria);
 }
