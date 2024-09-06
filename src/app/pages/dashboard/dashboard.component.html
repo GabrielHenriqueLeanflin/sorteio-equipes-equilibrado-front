@@ -1,1 +1,173 @@
-<p>dashboard works!</p>
+<header class="h-auto md:mb-8">
+  <div class="header shadow-lg h-20 flex items-center p-4">
+    <p class="h-auto titulo text-4xl mt-3">Sorteio Equipes Equilibrado</p>
+  </div>
+</header>
+
+<div class="flex flex-wrap">
+  <div class="md:w-1/2 flex justify-center max-h-[510px]">
+    <div class="flex flex-col m-3">
+      <div class="header rounded-xl h-14">
+        <p class="text-white justify-center flex items-center text-3xl">
+          JOGADORES
+        </p>
+      </div>
+
+      <table class="flex flex-col border rounded h-auto mt-2">
+        <thead class="text-[#0EA900] rounded h-9 p-2 bg-slate-200 gap-1">
+          <tr class="flex">
+            <th class="text-center border-r-2 border-white">Nome</th>
+            <th class="text-center border-r-2 border-white">Qualidade</th>
+            <th class="text-center border-r-2 border-white">
+              Editar / Excluir
+            </th>
+
+            <th class="flex flex-row-reverse justify-center">
+              <input
+                type="checkbox"
+                id="selectAll"
+                (change)="selectAll($event)"
+                class="max-w-8"
+              />Status
+            </th>
+          </tr>
+        </thead>
+        <tbody class="h-auto">
+          <tr class="flex h-9 p-2 gap-1 mt-2">
+            <td class="text-center">João Santos</td>
+            <td class="text-center">Muito Bom</td>
+            <td class="text-center"></td>
+            <td>
+              <input type="checkbox" class="checkbox-row" />
+            </td>
+          </tr>
+          <tr class="flex h-9 p-2 gap-1 mt-2">
+            <td class="text-center">Raul Oliveira</td>
+            <td class="text-center">Muito Bom</td>
+            <td class="text-center"></td>
+            <td>
+              <input type="checkbox" class="checkbox-row" />
+            </td>
+          </tr>
+          <tr class="flex h-9 p-2 gap-1 mt-2">
+            <td class="text-center">Fernando Silva</td>
+            <td class="text-center">Bom</td>
+            <td class="text-center"></td>
+            <td>
+              <input type="checkbox" class="checkbox-row" />
+            </td>
+          </tr>
+          <tr class="flex h-9 p-2 gap-1 mt-2">
+            <td class="text-center">Pedro Peixoto</td>
+            <td class="text-center">Bom</td>
+            <td class="text-center"></td>
+            <td>
+              <input type="checkbox" class="checkbox-row" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="md:w-1/2 flex flex-col max-h-[509px]">
+    <div class="flex items-center justify-center">
+      <div class="bg-[#E2E2E2] w-auto h-auto rounded-xl p-3">
+        <form>
+          <div class="w-full flex flex-col items-center">
+            <p class="text-center text-2xl font-medium text-[#797979] mb-1">
+              Novo Jogador
+            </p>
+            <label class="text-base text-[#797979]" for="name">Nome</label>
+
+            <input
+              class="pl-2 w-full h-auto bg-white rounded-3xl border-2 border-[#0EA900] mt-1"
+              id="name"
+              type="text"
+              name="name"
+              formControlName="name"
+              placeholder="Digite o nome do jogador"
+            />
+
+            <label class="text-base text-[#797979]" for="">Qualidade</label>
+            <div class="flex gap-3">
+              <input
+                class="pl-2 w-auto h-[22.07px] bg-white rounded-3xl border-2 border-[#0EA900] mt-1"
+                id=""
+                type="text"
+                name=""
+                formControlName=""
+                placeholder="Informe a qualidade"
+              />
+              <button
+                class="bg-[#0EA900] w-32 rounded-xl p-1 h-auto font-bold text-center text-white"
+              >
+                Adicionar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center">
+      <div class="bg-[#E2E2E2] w-auto h-auto rounded-xl p-3">
+        <form>
+          <div class="w-full flex flex-col items-center">
+            <p class="text-center text-2xl font-medium text-[#797979] mb-1">
+              Informações Adicionais
+            </p>
+            <div class="w-full flex flex-col items-center">
+              <div class="flex gap-3">
+              <label class="text-base text-[#797979]" for="">Jogador</label>
+              <label class="text-base text-[#797979]" for="">Opções</label>
+              </div>
+
+              <div class="flex gap-3">
+              <input
+                class="pl-2 max-w-[158px] h-auto bg-white rounded-3xl border-2 border-[#0EA900] mt-1"
+                id=""
+                type="number"
+                name=""
+                formControlName=""
+              />
+
+
+
+              <input
+                class="pl-2 max-w-[158px] h-auto bg-white rounded-3xl border-2 border-[#0EA900] mt-1"
+                id="op"
+                type="number"
+                name="op"
+                formControlName=""
+              />
+            </div>
+            </div>
+
+            <label class="text-base text-[#797979]" for="">Equipes</label>
+            <div class="flex gap-3">
+              <input
+                class="pl-2 max-w-[158px]  bg-white rounded-3xl border-2 border-[#0EA900] mt-1"
+                id=""
+                type="number"
+                name=""
+                formControlName=""
+              />
+              <button
+                class="bg-[#0EA900] w-32 rounded-xl p-1 h-auto font-bold text-center text-white"
+              >
+                Sortear
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-card-sorteado
+*ngIf="false"
+></app-card-sorteado>
+
+<footer class="header h-8"></footer>
