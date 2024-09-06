@@ -43,12 +43,12 @@ export class LoginComponent implements OnInit {
 
   onSubmit(event: Event){
     event.preventDefault();
-   /* if(this.loginForm.valid) {
+/*    if(this.loginForm.valid) {
 
       const email = this.loginForm.value.email
       const senha = this.loginForm.value.password
 
-      this.usersService.autenticar(email, senha).subscribe({
+      this.usersService.login(email, senha).subscribe({
         next: (value) => {
           console.log(value);
           this.router.navigateByUrl('/dashboard')

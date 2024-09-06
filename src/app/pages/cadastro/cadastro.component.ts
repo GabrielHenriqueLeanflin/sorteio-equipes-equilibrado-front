@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {UsersService} from "../../services/users.service";
 
 @Component({
   selector: 'app-cadastro',
@@ -17,6 +18,7 @@ export class CadastroComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private userService: UsersService,
   ) {}
 
   ngOnInit(): void {
@@ -34,10 +36,16 @@ export class CadastroComponent implements OnInit {
 
   onSubmit(event: Event) {
     event.preventDefault();
+    console.log(this.cadastroForm.value)
 
-    if(this.cadastroForm.valid){
-      console.log(this.cadastroForm.value)
-    }
+      this.userService.createUser(this.cadastroForm.value).subscribe(
+        (res: any) => {
+          console.log(res.message);
+        },
+        (error: any) => {
+          console.error(error.error.message);
+        }
+      );
   }
 
   voltar() {
