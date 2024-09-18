@@ -30,7 +30,8 @@ export class LoginComponent implements OnInit {
     this.createForm();
 
     this.usersService.getUsers().subscribe(res => {
-      console.log(res)
+       this.userCache = (res.body);
+       console.log(this.userCache);
     });
   }
 

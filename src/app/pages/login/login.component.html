@@ -46,6 +46,11 @@
       </button>
     </form>
 
+    <ng-container *ngFor="let item of userCache">
+      <span>{{ item.name }}</span>
+
+    </ng-container>
+
     <a
       class="h-auto text-center font-light mb-5 mt-2 hover:scale-125 transition-all"
       (click)="clickCadastro(true)"
