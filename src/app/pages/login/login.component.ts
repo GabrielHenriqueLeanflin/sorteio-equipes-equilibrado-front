@@ -28,11 +28,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-
-    this.usersService.getUsers().subscribe(res => {
-       this.userCache = (res.body);
-       console.log(this.userCache);
-    });
   }
 
   createForm() {
@@ -44,21 +39,14 @@ export class LoginComponent implements OnInit {
 
   onSubmit(event: Event){
     event.preventDefault();
-/*    if(this.loginForm.valid) {
-
-      const email = this.loginForm.value.email
-      const senha = this.loginForm.value.password
-
-      this.usersService.login(email, senha).subscribe({
-        next: (value) => {
-          console.log(value);
-          this.router.navigateByUrl('/dashboard')
-        },
-        error: (err) => {
-          console.log(err)
-        }
-      })
-    }*/
+    this.usersService.login(this.loginForm.value).subscribe(
+      (res) => {
+        this.router.navigate(['/dashboard']);
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
   }
 
   clickCadastro(event: boolean) {

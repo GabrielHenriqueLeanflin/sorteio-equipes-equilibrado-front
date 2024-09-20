@@ -13,7 +13,7 @@ export class UsersService {
     return this.http.post(`${environment.api_host}/api/cadastro`, variables);
   }
 
-  getUsers(): Observable<any> {
-    return this.http.get(`${environment.api_host}/api/usuarios`, { observe: 'response' });
+  login(variables: {email:string, password:string} ):Observable<any> {
+    return this.http.post(`${environment.api_host}/api/login`, variables);
   }
 }

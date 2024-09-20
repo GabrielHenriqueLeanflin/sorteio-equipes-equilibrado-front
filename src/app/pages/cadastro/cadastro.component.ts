@@ -40,7 +40,7 @@ export class CadastroComponent implements OnInit {
 
       this.userService.createUser(this.cadastroForm.value).subscribe(
         (res: any) => {
-          console.log(res.message);
+          this.showCardCadastro.emit(false);
         },
         (error: any) => {
           console.error(error.error.message);
