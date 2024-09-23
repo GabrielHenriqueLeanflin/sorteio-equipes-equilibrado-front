@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RouterLink, Router  } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UsersService } from '../../services/users.service';
+import { UsersService } from '../../core/services/users.service';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 
@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
     event.preventDefault();
     this.usersService.login(this.loginForm.value).subscribe(
       (res) => {
+        console.log(res)
         this.router.navigate(['/dashboard']);
       },
       (error) => {
