@@ -1,8 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, inject, OnInit, Output} from '@angular/core';
 import { RouterLink, Router  } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UsersService } from '../../core/services/users.service';
+import { AuthService } from '../../core/services/auth.service';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 
@@ -14,16 +14,13 @@ import { CommonModule } from '@angular/common';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
-
   @Output() showCardCadastro = new EventEmitter;
   loginForm: FormGroup = new FormGroup({});
-
-  public userCache: any;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private usersService: UsersService
+    private usersService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +40,7 @@ export class LoginComponent implements OnInit {
       (res) => {
         console.log(res)
         localStorage.setItem('token', res.token)
+        localStorage.setItem('id', res.id)
         this.router.navigate(['/dashboard']);
         alert(res.message)
       },

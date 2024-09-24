@@ -7,15 +7,15 @@ import {Router} from "@angular/router";
 @Injectable({
   providedIn: 'root',
 })
-export class UsersService {
+export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
   createUser(variables: {name:string, email:string, password:string, confirm_password:string} ):Observable<any> {
-    return this.http.post(`${environment.api_host}/api/cadastro`, variables);
+    return this.http.post(`${environment.api}/api/cadastro`, variables);
   }
 
   login(variables: {email:string, password:string} ):Observable<any> {
-    return this.http.post(`${environment.api_host}/api/login`, variables);
+    return this.http.post(`${environment.api}/api/login`, variables);
   }
 
   logout() {

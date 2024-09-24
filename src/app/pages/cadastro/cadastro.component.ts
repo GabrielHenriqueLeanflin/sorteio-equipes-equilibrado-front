@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {UsersService} from "../../core/services/users.service";
+import {AuthService} from "../../core/services/auth.service";
 
 @Component({
   selector: 'app-cadastro',
@@ -18,7 +18,7 @@ export class CadastroComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UsersService,
+    private userService: AuthService,
   ) {}
 
   ngOnInit(): void {

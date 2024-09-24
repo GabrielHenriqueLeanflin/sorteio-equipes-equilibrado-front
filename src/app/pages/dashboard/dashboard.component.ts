@@ -1,7 +1,8 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { CardSorteadoComponent } from "./card-sorteado/card-sorteado.component";
 import { CommonModule } from '@angular/common';
-import {UsersService} from "../../core/services/users.service";
+import {AuthService} from "../../core/services/auth.service";
+import {JogadoresService} from "../../core/services/jogadores.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -10,14 +11,24 @@ import {UsersService} from "../../core/services/users.service";
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent {
-  public usersService = inject(UsersService);
+export class DashboardComponent implements OnInit {
+  public usersService = inject(AuthService);
+  public jogadoresService = inject(JogadoresService)
 
-  public teste: boolean = true;
+  public id: any;
 
-  constructor() { }
+  ngOnInit() {
+    this.id = localStorage.getItem('id')
+    this.getAllJogadores();
+  }
 
-
+  getAllJogadores() {
+    this.jogadoresService.getAll(this.id).subscribe( (res) => {
+      console.log(res)
+    }, (error) => {
+      console.log(error)
+    })
+  }
 
   selectAll(event: Event): void {
     const isChecked = (event.target as HTMLInputElement).checked;
