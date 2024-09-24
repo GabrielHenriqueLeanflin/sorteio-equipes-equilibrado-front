@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { CardSorteadoComponent } from "./card-sorteado/card-sorteado.component";
 import { CommonModule } from '@angular/common';
+import {UsersService} from "../../core/services/users.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -10,6 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
+  public usersService = inject(UsersService);
 
   public teste: boolean = true;
 
@@ -25,6 +27,9 @@ export class DashboardComponent {
     });
   }
 
+  sair() {
+    this.usersService.logout();
+  }
 }
 
 
