@@ -23,16 +23,54 @@ export class DashboardComponent implements OnInit {
   async ngOnInit() {
     this.getIdUser();
     await this.loadJogadores();
-
-    console.log(this.jogadores)
+    this.sortearJogadores();
+    this.sortearDuasOpcoesDeJogadores();
   }
 
   getIdUser() {
     this.id = localStorage.getItem('id')
   }
 
-  sortearJogadores(){
+  sortearDuasOpcoesDeJogadores() {
+    // Gera duas opções de times
+    const opcao1 = this.sortearJogadores(); // Primeira opção
+    const opcao2 = this.sortearJogadores(); // Segunda opção
 
+    // Array com as duas opções de equipes
+    const opcoes = [opcao1, opcao2];
+
+    // Exibe as duas opções
+    console.log(opcoes);
+
+    return opcoes;
+  }
+
+  sortearJogadores() {
+    let time1: any[] = [];
+    let time2: any[] = [];
+    let time3: any[] = [];
+
+    // Jogadores 9 e 10
+    let playerBom = this.jogadores.jogadores.filter((item: { level: number; }) => item.level >= 9);
+    playerBom.sort(() => Math.random() - 0.5);
+
+    // Jogadores medianos
+    let playerMediado = this.jogadores.jogadores.filter((item: { level: number; }) => item.level <= 8);
+    playerMediado.sort(() => Math.random() - 0.5);
+
+    // Distribuir jogadores 9 e 10 de maneira equilibrada
+    playerBom.forEach((jogador: any) => {
+      const smallestTeam = [time1, time2, time3].sort((a, b) => a.length - b.length)[0];
+      smallestTeam.push(jogador);
+    });
+
+    // Distribuir jogadores medianos de maneira equilibrada
+    playerMediado.forEach((jogador: any) => {
+      const smallestTeam = [time1, time2, time3].sort((a, b) => a.length - b.length)[0];
+      smallestTeam.push(jogador);
+    });
+
+    return [time1, time2, time3];
   }
 
   async loadJogadores() {
