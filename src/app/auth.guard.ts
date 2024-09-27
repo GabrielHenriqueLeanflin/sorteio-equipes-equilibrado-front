@@ -9,6 +9,7 @@ export const authGuard: CanActivateFn = (route, state) => {
   if (state.url === '/') {
     localStorage.removeItem('id');
     localStorage.removeItem('token');
+    localStorage.removeItem("user");
     return true
   }
 

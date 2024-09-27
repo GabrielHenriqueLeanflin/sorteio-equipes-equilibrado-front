@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
 
   /** Variáveis */
   public id: any;
+  public name: any;
   public jogadores: any;
 
   async ngOnInit() {
@@ -30,6 +31,7 @@ export class DashboardComponent implements OnInit {
 
   getIdUser() {
     this.id = localStorage.getItem('id')
+    this.name = localStorage.getItem("user")
   }
 
   sortearDuasOpcoesDeJogadores() {
