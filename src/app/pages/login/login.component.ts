@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
     event.preventDefault();
     this.usersService.login(this.loginForm.value).subscribe(
       (res) => {
-        console.log(res)
         localStorage.setItem('token', res.token)
         localStorage.setItem('id', res.id)
         this.router.navigate(['/dashboard']);

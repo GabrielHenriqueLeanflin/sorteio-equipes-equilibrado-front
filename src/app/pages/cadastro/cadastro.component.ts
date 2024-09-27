@@ -36,8 +36,6 @@ export class CadastroComponent implements OnInit {
 
   onSubmit(event: Event) {
     event.preventDefault();
-    console.log(this.cadastroForm.value)
-
       this.userService.createUser(this.cadastroForm.value).subscribe(
         (res: any) => {
           this.showCardCadastro.emit(false);
