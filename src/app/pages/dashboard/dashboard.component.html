@@ -1,12 +1,12 @@
 <header class="h-auto md:mb-8">
   <div class="header shadow-lg h-20 flex items-center justify-between p-4">
-    <p class="h-auto w-[700px] titulo text-4xl mt-3">Sorteio Equipes Equilibrado</p>
+
+    <p class="h-auto w-[700px] titulo text-4xl mt-3 ">Sorteio Equipes Equilibrado</p>
     <div class="w-auto h-auto flex gap-4">
     <p class=" m-0 flex items-center text-white text-xl font-normal">
       Olá, Usuário!
     </p>
-    <button class="w-24 h-auto m-0 flex items-center justify-center text-[#0EA900] font-bold bg-white rounded-lg">SAIR</button>
-    <!-- <img class="h-7 w-7" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABNUlEQVR4nO3aO05DMRBGYUNBiwQtG0FZGG0aXjvJCmgQC6AIUNDR5rKNE01kikjJlSfRDf+MfHpL88nJfckFuACegV90GoBHm620Bjyh24MHYnrrtogEzOpMg2fRpiIW3rk6ZOLoOyIWfUfEAu5SXLUsYF4yQFx1yIQBC+AFuAz90wKWdaz3Zowo5Ab4qaMZ6iok5CCMKmQH5mMUowxxYdQhezDXJSKkCRMFsgPzuYWJBBnFRIPsxRwDAc6AL/6/5bGQ8/rHiw1J89OSugwTCMLYvSQKhAw3RFqet9QhtD7OK0PwvJOoQsjwYkWWV13gO8vHhzfgNfznoIPqkBNEho/YwNw1lzBk03QLThTeuTpk4ug7kmBHhrpmVvQO1aw8i+xclGr3HogdPDPM384otDKE5+DZGhon/IxufD43AAAAAElFTkSuQmCC"> -->
+    <button (click)="sair()" class="w-24 h-auto m-0 flex items-center justify-center text-[#0EA900] font-bold bg-white rounded-lg">SAIR</button>
   </div>
   </div>
 
@@ -104,7 +104,6 @@
                 id=""
                 type="text"
                 name=""
-                formControlName=""
                 placeholder="Informe a qualidade"
               />
               <button
@@ -137,7 +136,6 @@
                 id=""
                 type="number"
                 name=""
-                formControlName=""
               />
 
 
@@ -147,7 +145,6 @@
                 id="op"
                 type="number"
                 name="op"
-                formControlName=""
               />
             </div>
             </div>
@@ -159,7 +156,6 @@
                 id=""
                 type="number"
                 name=""
-                formControlName=""
               />
               <button
                 class="bg-[#0EA900] w-32 rounded-xl p-1 h-auto font-bold text-center text-white"
