@@ -31,12 +31,7 @@
             </th>
 
             <th class="flex flex-row-reverse justify-center">
-              <input
-                type="checkbox"
-                id="selectAll"
-                (change)="selectAll($event)"
-                class="max-w-8"
-              />Status
+              Status
             </th>
           </tr>
         </thead>
@@ -51,7 +46,7 @@
                 <g fill="#0ea900" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(10.66667,10.66667)"><path d="M10,2l-1,1h-4c-0.6,0 -1,0.4 -1,1c0,0.6 0.4,1 1,1h2h10h2c0.6,0 1,-0.4 1,-1c0,-0.6 -0.4,-1 -1,-1h-4l-1,-1zM5,7v13c0,1.1 0.9,2 2,2h10c1.1,0 2,-0.9 2,-2v-13zM9,9c0.6,0 1,0.4 1,1v9c0,0.6 -0.4,1 -1,1c-0.6,0 -1,-0.4 -1,-1v-9c0,-0.6 0.4,-1 1,-1zM15,9c0.6,0 1,0.4 1,1v9c0,0.6 -0.4,1 -1,1c-0.6,0 -1,-0.4 -1,-1v-9c0,-0.6 0.4,-1 1,-1z"></path></g></g>
                 </svg></td>
             <td>
-              <input type="checkbox" class="checkbox-row" />
+              <input type="checkbox" class="checkbox-row" [checked]="jogador.status" [disabled]="true" />
             </td>
           </tr>
 
