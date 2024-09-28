@@ -35,5 +35,10 @@ body {
 }
 
 .shadow-custom {
-  box-shadow: 0px 4px 74.7px 27px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 74.7px 27px rgba(0, 0, 0, 0.1);
+}
+
+.mat-mdc-form-field-error {
+  font-size: 12px;
+  color: red;
 }

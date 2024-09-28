@@ -79,9 +79,9 @@
   </div>
 
   <div class="md:w-1/2 flex flex-col max-h-[509px]">
+<!--
     <div class="flex items-center justify-center">
       <div class="bg-[#E2E2E2] w-auto h-auto rounded-xl p-3">
-        <form>
           <div class="w-full flex flex-col items-center">
             <p class="text-center text-2xl font-medium text-[#797979] mb-1">
               Novo Jogador
@@ -111,57 +111,47 @@
               </button>
             </div>
           </div>
-        </form>
       </div>
     </div>
+-->
 
     <div class="flex items-center justify-center">
       <div class="bg-[#E2E2E2] w-auto h-auto rounded-xl p-3">
-        <form>
-          <div class="w-full flex flex-col items-center">
-            <p class="text-center text-2xl font-medium text-[#797979] mb-1">
-              Informações Adicionais
-            </p>
-            <div class="w-full flex flex-col items-center">
-              <div class="flex gap-3">
-              <label class="text-base text-[#797979]" for="">Jogador</label>
-              <label class="text-base text-[#797979]" for="">Opções</label>
-              </div>
+        <div [formGroup]="formSorteio" class="w-100 flex flex-col items-center">
+           <div class="w-full flex items-center">
+             <div class="flex flex-column">
+               <label class="text-base text-[#797979]">Nº de Opções</label>
 
-              <div class="flex gap-3">
-              <input
+               <input
                 class="pl-2 max-w-[158px] h-auto bg-white rounded-3xl border-2 border-[#0EA900] mt-1"
+                id="numero_opcoes"
                 type="number"
-                name=""
-              />
+                formControlName="numero_opcoes"
+                />
+               <mat-error *ngIf="formSorteioInvalid">Campo obrigatório</mat-error>
+             </div>
+           </div>
 
+            <div class="flex flex-column">
+              <label class="text-base text-[#797979]">Nº de Equipes</label>
 
-
-              <input
-                class="pl-2 max-w-[158px] h-auto bg-white rounded-3xl border-2 border-[#0EA900] mt-1"
-                id="op"
-                type="number"
-                name="op"
-              />
-            </div>
-            </div>
-
-            <label class="text-base text-[#797979]" for="">Equipes</label>
-            <div class="flex gap-3">
               <input
                 class="pl-2 max-w-[158px]  bg-white rounded-3xl border-2 border-[#0EA900] mt-1"
-                id=""
+                id="numero_equipes"
                 type="number"
-                name=""
+                formControlName="numero_equipes"
               />
+
+              <mat-error *ngIf="formSorteioInvalid">Campo obrigatório</mat-error>
+
               <button
                 class="bg-[#0EA900] w-32 rounded-xl p-1 h-auto font-bold text-center text-white"
+                (click)="sortear()"
               >
                 Sortear
               </button>
             </div>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>

@@ -3,11 +3,13 @@ import { CardSorteadoComponent } from "./card-sorteado/card-sorteado.component";
 import { CommonModule } from '@angular/common';
 import {AuthService} from "../../core/services/auth.service";
 import {JogadoresService} from "../../core/services/jogadores.service";
+import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
+import {MatError} from "@angular/material/form-field";
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CardSorteadoComponent, CommonModule],
+  imports: [CardSorteadoComponent, CommonModule, ReactiveFormsModule, MatError],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
@@ -15,67 +17,82 @@ export class DashboardComponent implements OnInit {
   /** Injects */
   public usersService = inject(AuthService);
   public jogadoresService = inject(JogadoresService)
+  public formBuilder = inject(FormBuilder);
 
   /** Variáveis */
   public id: any;
-  public jogadores: any;
+  public userCache: any;
+  public formSorteio: any;
+  public formSorteioInvalid = false;
 
   async ngOnInit() {
+    this.createForm();
     this.getIdUser();
     await this.loadJogadores();
-    this.sortearJogadores();
-    this.sortearDuasOpcoesDeJogadores();
+  }
+
+  createForm() {
+    this.formSorteio = this.formBuilder.group({
+      numero_opcoes: ['', [Validators.required]],
+      numero_equipes: ['', [Validators.required]],
+    })
   }
 
   getIdUser() {
     this.id = localStorage.getItem('id')
   }
 
-  sortearDuasOpcoesDeJogadores() {
-    // Gera duas opções de times
-    const opcao1 = this.sortearJogadores(); // Primeira opção
-    const opcao2 = this.sortearJogadores(); // Segunda opção
+  sortear() {
+    if (this.formSorteio.valid){
+      let numeroOpcoes = this.formSorteio.get('numero_opcoes').value;
+      let opcoes:any = []
 
-    // Array com as duas opções de equipes
-    const opcoes = [opcao1, opcao2];
+      for (let i = 0; i < numeroOpcoes; i++) {
+        opcoes.push(this.dividiEquipes());
+      }
+      console.log(opcoes)
 
-    // Exibe as duas opções
-    console.log(opcoes);
-
-    return opcoes;
+      return opcoes;
+    } else {
+      this.formSorteioInvalid = true;
+    }
   }
 
-  sortearJogadores() {
-    let time1: any[] = [];
-    let time2: any[] = [];
-    let time3: any[] = [];
+  dividiEquipes() {
+    // Quantidade de equipes
+    let numero_equipes = this.formSorteio.get('numero_equipes').value;
+    let groupTeam:any = [];
 
-    // Jogadores 9 e 10
-    let playerBom = this.jogadores.jogadores.filter((item: { level: number; }) => item.level >= 9);
+    for (let i = 0; i < numero_equipes; i++) {
+      let team = []
+      groupTeam.push(team)
+    }
+
+    // Jogadores Bons
+    let playerBom = this.userCache.jogadores.filter((item) => item.level >= 9);
     playerBom.sort(() => Math.random() - 0.5);
 
-    // Jogadores medianos
-    let playerMediado = this.jogadores.jogadores.filter((item: { level: number; }) => item.level <= 8);
+    // Jogadores Medianos
+    let playerMediado = this.userCache.jogadores.filter((item) => item.level <= 8);
     playerMediado.sort(() => Math.random() - 0.5);
 
-    // Distribuir jogadores 9 e 10 de maneira equilibrada
-    playerBom.forEach((jogador: any) => {
-      const smallestTeam = [time1, time2, time3].sort((a, b) => a.length - b.length)[0];
-      smallestTeam.push(jogador);
+    playerBom.forEach((jogador) => {
+      const menorTeam = groupTeam.sort((a, b) => a.length - b.length)[0];
+      menorTeam.push(jogador);
     });
 
-    // Distribuir jogadores medianos de maneira equilibrada
-    playerMediado.forEach((jogador: any) => {
-      const smallestTeam = [time1, time2, time3].sort((a, b) => a.length - b.length)[0];
-      smallestTeam.push(jogador);
+    playerMediado.forEach((jogador) => {
+      const menorTeam = groupTeam.sort((a, b) => a.length - b.length)[0];
+      menorTeam.push(jogador);
     });
 
-    return [time1, time2, time3];
+    return groupTeam;
   }
 
   async loadJogadores() {
-    this.jogadores = await this.getAllJogadores()
+    this.userCache = await this.getAllJogadores()
   }
+
   getAllJogadores(): Promise<any> {
     return new Promise(resolve => this.jogadoresService.getAll(this.id).subscribe(
       res => {
