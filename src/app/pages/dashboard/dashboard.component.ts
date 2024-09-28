@@ -4,12 +4,19 @@ import { CommonModule } from '@angular/common';
 import {AuthService} from "../../core/services/auth.service";
 import {JogadoresService} from "../../core/services/jogadores.service";
 import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
-import {MatError} from "@angular/material/form-field";
+import {MatError, MatFormField} from "@angular/material/form-field";
+import {
+  MatAccordion, MatExpansionModule,
+  MatExpansionPanel,
+  MatExpansionPanelDescription,
+  MatExpansionPanelTitle
+} from "@angular/material/expansion";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CardSorteadoComponent, CommonModule, ReactiveFormsModule, MatError],
+  imports: [CardSorteadoComponent, CommonModule, ReactiveFormsModule, MatError, MatAccordion, MatExpansionPanel, MatExpansionPanelTitle, MatExpansionPanelDescription, MatIcon, MatFormField, MatExpansionModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
@@ -19,12 +26,13 @@ export class DashboardComponent implements OnInit {
   public jogadoresService = inject(JogadoresService)
   public formBuilder = inject(FormBuilder);
 
-
   /** Variáveis */
   public id: any;
   public userCache: any;
   public formSorteio: any;
   public formSorteioInvalid = false;
+  public equipesSorteadas: any;
+  public showCardSorteio: boolean = false;
 
   async ngOnInit() {
     this.createForm();
@@ -53,7 +61,9 @@ export class DashboardComponent implements OnInit {
       }
       console.log(opcoes)
 
-      return opcoes;
+      this.equipesSorteadas = opcoes;
+      this.showCardSorteio = true;
+
     } else {
       this.formSorteioInvalid = true;
     }
@@ -106,6 +116,10 @@ export class DashboardComponent implements OnInit {
 
   sair() {
     this.usersService.logout();
+  }
+
+  emitirShow($event: any) {
+    this.showCardSorteio = $event;
   }
 }
 
