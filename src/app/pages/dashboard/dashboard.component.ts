@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
   public jogadoresService = inject(JogadoresService)
   public formBuilder = inject(FormBuilder);
 
+
   /** Variáveis */
   public id: any;
   public userCache: any;
@@ -101,14 +102,6 @@ export class DashboardComponent implements OnInit {
         console.error(error)
       }
     ));
-  }
-
-  selectAll(event: Event): void {
-    const isChecked = (event.target as HTMLInputElement).checked;
-    const checkboxes = document.querySelectorAll<HTMLInputElement>('.checkbox-row');
-    checkboxes.forEach(checkbox => {
-      checkbox.checked = isChecked;
-    });
   }
 
   sair() {
