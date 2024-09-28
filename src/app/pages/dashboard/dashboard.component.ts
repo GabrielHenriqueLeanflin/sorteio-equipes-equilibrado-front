@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit {
 
   /** Variáveis */
   public id: any;
+  public name: any;
   public userCache: any;
   public formSorteio: any;
   public formSorteioInvalid = false;
@@ -49,6 +50,7 @@ export class DashboardComponent implements OnInit {
 
   getIdUser() {
     this.id = localStorage.getItem('id')
+    this.name = localStorage.getItem("user")
   }
 
   sortear() {
