@@ -34,6 +34,8 @@ export class DashboardComponent implements OnInit {
   public formSorteioInvalid = false;
   public equipesSorteadas: any;
   public showCardSorteio: boolean = false;
+  public formTabela;
+  public showSaveStatus: any;
 
   async ngOnInit() {
     this.createForm();
@@ -63,6 +65,7 @@ export class DashboardComponent implements OnInit {
       }
       console.log(opcoes)
 
+      this.saveStatus()
       this.equipesSorteadas = opcoes;
       this.showCardSorteio = true;
 
@@ -71,17 +74,15 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  saveStatus(id, status) {
-    console.log(id, status)
-
-    return new Promise(resolve => this.jogadoresService.saveStatus(id, status).subscribe(
-      res => {
-        console.log(res)
-        resolve(res)
-      }, error => {
-        console.error(error)
-      }
-    ));
+  saveStatus() {
+      return new Promise(resolve => this.jogadoresService.saveStatus(this.userCache.jogadores).subscribe(
+        res => {
+          this.showSaveStatus = false
+          resolve(res)
+        }, error => {
+          console.error(error)
+        }
+      ));
   }
 
   dividiEquipes() {
@@ -139,6 +140,10 @@ export class DashboardComponent implements OnInit {
 
   emitirShow($event: any) {
     this.showCardSorteio = $event;
+  }
+
+  showSaveStatus2() {
+    this.showSaveStatus = true;
   }
 }
 
