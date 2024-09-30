@@ -3,7 +3,7 @@ import { CardSorteadoComponent } from "./card-sorteado/card-sorteado.component";
 import { CommonModule } from '@angular/common';
 import {AuthService} from "../../core/services/auth.service";
 import {JogadoresService} from "../../core/services/jogadores.service";
-import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatError, MatFormField} from "@angular/material/form-field";
 import {
   MatAccordion, MatExpansionModule,
@@ -16,7 +16,7 @@ import {MatIcon} from "@angular/material/icon";
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CardSorteadoComponent, CommonModule, ReactiveFormsModule, MatError, MatAccordion, MatExpansionPanel, MatExpansionPanelTitle, MatExpansionPanelDescription, MatIcon, MatFormField, MatExpansionModule],
+  imports: [CardSorteadoComponent, CommonModule, ReactiveFormsModule, MatError, MatAccordion, MatExpansionPanel, MatExpansionPanelTitle, MatExpansionPanelDescription, MatIcon, MatFormField, MatExpansionModule, FormsModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
@@ -71,6 +71,19 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  saveStatus(id, status) {
+    console.log(id, status)
+
+    return new Promise(resolve => this.jogadoresService.saveStatus(id, status).subscribe(
+      res => {
+        console.log(res)
+        resolve(res)
+      }, error => {
+        console.error(error)
+      }
+    ));
+  }
+
   dividiEquipes() {
     // Quantidade de equipes
     let numero_equipes = this.formSorteio.get('numero_equipes').value;
@@ -90,13 +103,17 @@ export class DashboardComponent implements OnInit {
     playerMediado.sort(() => Math.random() - 0.5);
 
     playerBom.forEach((jogador) => {
+      if (jogador.status !== false) {
       const menorTeam = groupTeam.sort((a, b) => a.length - b.length)[0];
       menorTeam.push(jogador);
+      }
     });
 
     playerMediado.forEach((jogador) => {
-      const menorTeam = groupTeam.sort((a, b) => a.length - b.length)[0];
-      menorTeam.push(jogador);
+      if (jogador.status !== false) {
+        const menorTeam = groupTeam.sort((a, b) => a.length - b.length)[0];
+        menorTeam.push(jogador);
+      }
     });
 
     return groupTeam;
