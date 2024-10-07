@@ -49,9 +49,13 @@ export class DashboardComponent implements OnInit {
   }
 
   getIdUser() {
-    this.id = localStorage.getItem('id')
-    this.name = localStorage.getItem("user")
+    this.id = localStorage.getItem('id');
+    const fullName = localStorage.getItem("user");
+    if (fullName) {
+      this.name = fullName.split(' ')[0];
+    }
   }
+
 
   sortear() {
     if (this.formSorteio.valid){
